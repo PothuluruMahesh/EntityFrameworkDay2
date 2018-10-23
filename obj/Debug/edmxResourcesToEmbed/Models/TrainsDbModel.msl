@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TrainsDbModelStoreContainer" CdmEntityContainer="TrainsDbModelContainer">
+    <EntitySetMapping Name="tblTrains">
+      <EntityTypeMapping TypeName="IsTypeOf(TrainsDbModel.tblTrains)">
+        <MappingFragment StoreEntitySet="tblTrains">
+          <ScalarProperty Name="TrainNo" ColumnName="TrainNo" />
+          <ScalarProperty Name="TrainName" ColumnName="TrainName" />
+          <ScalarProperty Name="Departure" ColumnName="Departure" />
+          <ScalarProperty Name="Destination" ColumnName="Destination" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

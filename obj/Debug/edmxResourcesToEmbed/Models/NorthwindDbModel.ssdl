@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NorthwindDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblCategories">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="tblProducts">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Category_CategoryId" Type="int" />
+  </EntityType>
+  <Association Name="FK_dbo_tblProducts_dbo_tblCategories_Category_CategoryId">
+    <End Role="tblCategories" Type="Self.tblCategories" Multiplicity="0..1" />
+    <End Role="tblProducts" Type="Self.tblProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCategories">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="tblProducts">
+        <PropertyRef Name="Category_CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NorthwindDbModelStoreContainer">
+    <EntitySet Name="tblCategories" EntityType="Self.tblCategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblProducts" EntityType="Self.tblProducts" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_dbo_tblProducts_dbo_tblCategories_Category_CategoryId" Association="Self.FK_dbo_tblProducts_dbo_tblCategories_Category_CategoryId">
+      <End Role="tblCategories" EntitySet="tblCategories" />
+      <End Role="tblProducts" EntitySet="tblProducts" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
